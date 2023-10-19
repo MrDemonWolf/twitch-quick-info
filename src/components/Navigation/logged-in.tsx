@@ -75,7 +75,7 @@ export default function Example() {
                       <Image
                         className="h-8 w-8 rounded-full"
                         src={
-                          sessionData.user.image ||
+                          sessionData.user.image ??
                           "https://www.gravatar.com/avatar/00000000000000000000000000000000"
                         }
                         alt={`Avatar of ${sessionData.user.name}`}
@@ -118,7 +118,7 @@ export default function Example() {
                   <Image
                     className="h-10 w-10 rounded-full"
                     src={
-                      sessionData.user.image ||
+                      sessionData.user.image ??
                       "https://www.gravatar.com/avatar/00000000000000000000000000000000"
                     }
                     alt={`Avatar of ${sessionData.user.name}`}
