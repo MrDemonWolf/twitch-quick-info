@@ -17,6 +17,10 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+  images: {
+    domains: ["static-cdn.jtvnw.net", "gravatar.com"],
+  },
 };
 
 export default config;
