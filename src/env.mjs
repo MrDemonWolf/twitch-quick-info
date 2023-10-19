@@ -33,6 +33,9 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_APP_NAME: z.string().default("Twitch Auth"),
+    NEXT_PUBLIC_APP_DESCRIPTION: z.string().default("Twitch Auth"),
+    NEXT_PUBLIC_TWITTER_HANDLE: z.string().default(""),
   },
 
   /**
@@ -45,6 +48,9 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     TWITCH_CLIENT_ID: process.env.TWITCH_CLIENT_ID,
     TWITCH_CLIENT_SECRET: process.env.TWITCH_CLIENT_SECRET,
+    NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
+    NEXT_PUBLIC_APP_DESCRIPTION: process.env.NEXT_PUBLIC_APP_DESCRIPTION,
+    NEXT_PUBLIC_TWITTER_HANDLE: process.env.NEXT_PUBLIC_TWITTER_HANDLE,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

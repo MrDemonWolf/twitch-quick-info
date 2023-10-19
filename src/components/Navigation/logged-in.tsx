@@ -10,10 +10,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LoggedOut from "~/components/Navigation/logged-out";
 import ThemeToggle from "../theme-toggle";
 
-export default function Example() {
+export default function LoggedIn() {
   const { data: sessionData } = useSession();
   if (!sessionData) return <LoggedOut />;
-  console.log(sessionData);
   return (
     <Disclosure as="header" className="bg-gray-800">
       {({ open }) => (
@@ -29,6 +28,9 @@ export default function Example() {
                     width={32}
                     height={32}
                   />
+                  <span className="ml-4 align-middle dark:text-white">
+                    Streamer Quick Info
+                  </span>
                 </div>
               </div>
               <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
@@ -96,11 +98,11 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-500">
                       <Menu.Item
                         as="button"
                         onClick={() => void signOut()}
-                        className="block w-full  px-4 py-2 text-sm text-gray-700"
+                        className="block w-full  px-4 py-2 text-sm text-gray-700 dark:text-white"
                       >
                         Sign Out
                       </Menu.Item>

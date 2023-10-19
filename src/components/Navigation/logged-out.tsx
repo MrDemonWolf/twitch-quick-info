@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 
 import { Disclosure } from "@headlessui/react";
 
-export default function Example() {
+export default function LoggedOut() {
   return (
     <Disclosure as="header" className="bg-gray-800">
       <>
