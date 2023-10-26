@@ -33,9 +33,9 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
-    NEXT_PUBLIC_APP_NAME: z.string().default("Twitch Auth"),
-    NEXT_PUBLIC_APP_DESCRIPTION: z.string().default("Twitch Auth"),
-    NEXT_PUBLIC_TWITTER_HANDLE: z.string().default(""),
+    NEXT_PUBLIC_APP_NAME: z.string(),
+    NEXT_PUBLIC_APP_DESCRIPTION: z.string(),
+    NEXT_PUBLIC_TWITTER_HANDLE: z.string(),
   },
 
   /**
