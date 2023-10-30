@@ -19,7 +19,7 @@ const config = {
   },
 
   images: {
-    domains: ["static-cdn.jtvnw.net", "gravatar.com"],
+    domains: ["static-cdn.jtvnw.net", "www.gravatar.com"],
   },
 };
 

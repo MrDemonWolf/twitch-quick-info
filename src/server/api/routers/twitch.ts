@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { TRPCError } from "@trpc/server";
+
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 
 type Headers = {
@@ -21,22 +23,6 @@ type UserResponse = {
 };
 
 export const twitchRouter = createTRPCRouter({
-  // create: protectedProcedure
-  //   .input(z.object({ name: z.string().min(1) }))
-  //   .mutation(async ({ input }) => {
-  //     // simulate a slow db call
-  //     await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  //     post = { id: post.id + 1, name: input.name };
-  //     return post;
-  //   }),
-
-  // getUser: protectedProcedure.query(() => {
-
-  //   const
-  // }),
-  // make a requiest to GET https://api.twitch.tv/helix/users?login=USERNAME using fetch and the access token priv
-  // return the response
   getUser: protectedProcedure
     .input(
       z.object({
@@ -44,13 +30,79 @@ export const twitchRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input }) => {
-      const response = await fetch("https://api.twitch.tv/helix/users", {
-        headers: {
-          Authorization: `Bearer ${input.accessToken}`,
-          "Client-Id": process.env.TWITCH_CLIENT_ID,
-        } as Headers,
-      });
-      const json = (await response.json()) as { data: UserResponse[] };
-      return json;
+      try {
+        const response = await fetch("https://api.twitch.tv/helix/users", {
+          headers: {
+            Authorization: `Bearer ${input.accessToken}`,
+            "Client-Id": process.env.TWITCH_CLIENT_ID,
+          } as Headers,
+        });
+        const json = (await response.json()) as { data: UserResponse[] };
+        return json;
+      } catch (err) {
+        console.log(err);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
+    }),
+  getUserById: protectedProcedure
+    .input(
+      z.object({
+        accessToken: z.string(),
+        id: z.string(),
+      }),
+    )
+    .query(async ({ input }) => {
+      try {
+        if (!input.accessToken) throw new Error("No access token provided");
+        if (!input.login) throw new Error("No login provided");
+        const response = await fetch(
+          `https://api.twitch.tv/helix/users?id=${input.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${input.accessToken}`,
+              "Client-Id": process.env.TWITCH_CLIENT_ID,
+            } as Headers,
+          },
+        );
+        const json = (await response.json()) as { data: UserResponse[] };
+        return json;
+      } catch (err) {
+        console.log(err);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
+    }),
+  getUserByName: protectedProcedure
+    .input(
+      z.object({
+        accessToken: z.string(),
+        login: z.string(),
+      }),
+    )
+    .query(async ({ input }) => {
+      try {
+        if (!input.accessToken) throw new Error("No access token provided");
+        if (!input.login) throw new Error("No login provided");
+        const response = await fetch(
+          `https://api.twitch.tv/helix/users?login=${input.login}`,
+          {
+            headers: {
+              Authorization: `Bearer ${input.accessToken}`,
+              "Client-Id": process.env.TWITCH_CLIENT_ID,
+            } as Headers,
+          },
+        );
+
+        const json = (await response.json()) as { data: UserResponse[] };
+        return json;
+      } catch (err) {
+        console.log(err);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
     }),
 });
