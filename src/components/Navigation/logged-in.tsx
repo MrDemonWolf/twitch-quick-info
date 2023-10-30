@@ -21,8 +21,8 @@ export default function LoggedIn() {
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
             <div className="relative flex h-16 justify-between">
               <div className="relative z-10 flex px-2 lg:px-0">
-                <Link href="/">
-                  <div className="flex flex-shrink-0 items-center">
+                <div className="flex flex-shrink-0 items-center">
+                  <Link href="/">
                     <Image
                       className="h-8 w-auto"
                       src="/img/logo.png"
@@ -33,8 +33,8 @@ export default function LoggedIn() {
                     <span className="ml-4 align-middle font-bold text-gray-900 dark:text-white">
                       Streamer Quick Info
                     </span>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </div>
               <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
                 <div className="w-full sm:max-w-xs">
