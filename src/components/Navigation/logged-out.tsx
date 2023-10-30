@@ -2,6 +2,7 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 
 import { Disclosure } from "@headlessui/react";
+import Link from "next/link";
 
 export default function LoggedOut() {
   return (
@@ -11,6 +12,7 @@ export default function LoggedOut() {
           <div className="relative flex h-16 justify-between">
             <div className="relative z-10 flex px-2 lg:px-0">
               <div className="flex flex-shrink-0 items-center">
+                <Link href="/">
                 <Image
                   className="h-8 w-auto"
                   src="/img/logo.png"
@@ -22,6 +24,7 @@ export default function LoggedOut() {
                   Streamer Quick Info
                 </span>
               </div>
+              </Link>
             </div>
             <div className="relative z-10 ml-4 flex items-center">
               <button
