@@ -2,9 +2,9 @@ export default function Footer() {
   const copyrightYear = new Date().getFullYear();
   return (
     <>
-      <footer className=" text-gray-700 dark:text-white">
+      <footer className=" text-gray-900 dark:text-gray-200">
         <div className="container mx-auto flex flex-col items-center px-5 py-5 sm:flex-row">
-          <p className="text-center text-gray-500 md:text-right">
+          <p className="text-center md:text-right">
             © {copyrightYear}
             <a
               href="https://www.mrdemonwolf.com"
