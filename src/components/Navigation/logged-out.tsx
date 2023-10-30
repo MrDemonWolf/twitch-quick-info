@@ -13,18 +13,18 @@ export default function LoggedOut() {
             <div className="relative z-10 flex px-2 lg:px-0">
               <div className="flex flex-shrink-0 items-center">
                 <Link href="/">
-                <Image
-                  className="h-8 w-auto"
-                  src="/img/logo.png"
-                  alt="Streamer Quick Info"
-                  width={32}
-                  height={32}
-                />
-                <span className="ml-4 align-middle font-bold text-gray-900 dark:text-white">
-                  Streamer Quick Info
-                </span>
+                  <Image
+                    className="h-8 w-auto"
+                    src="/img/logo.png"
+                    alt="Streamer Quick Info"
+                    width={32}
+                    height={32}
+                  />
+                  <span className="ml-4 align-middle font-bold text-gray-900 dark:text-white">
+                    Streamer Quick Info
+                  </span>
+                </Link>
               </div>
-              </Link>
             </div>
             <div className="relative z-10 ml-4 flex items-center">
               <button

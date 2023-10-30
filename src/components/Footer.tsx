@@ -8,7 +8,7 @@ export default function Footer() {
             © {copyrightYear}
             <a
               href="https://www.mrdemonwolf.com"
-              className="ml-1 text-gray-200 dark:text-gray-400"
+              className="ml-1 text-gray-900 dark:text-gray-200"
               rel="noopener noreferrer"
               target="_blank"
             >
