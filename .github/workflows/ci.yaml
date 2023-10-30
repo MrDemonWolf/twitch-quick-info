@@ -1,0 +1,30 @@
+name: CI
+
+on: [push, pull_request]
+
+env:
+  TWITCH_CLIENT_ID: "my-twitch-client-id"
+  TWITCH_CLIENT_SECRET: "my-twitch-client-secret"
+  NEXT_PUBLIC_APP_NAME: "my-app-name"
+  NEXT_PUBLIC_APP_DESCRIPTION: "my-app-description"
+  NEXT_PUBLIC_TWITTER_HANDLE: "my-twitter-handle"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Print Environment Variable
+        run: echo $MY_ENV_VAR

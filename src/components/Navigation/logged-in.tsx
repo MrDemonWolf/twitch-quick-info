@@ -14,7 +14,7 @@ export default function LoggedIn() {
   const { data: sessionData } = useSession();
   if (!sessionData) return <LoggedOut />;
   return (
-    <Disclosure as="header" className="bg-gray-800">
+    <Disclosure as="header" className="bg-gray-200 dark:bg-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
@@ -28,7 +28,7 @@ export default function LoggedIn() {
                     width={32}
                     height={32}
                   />
-                  <span className="ml-4 align-middle dark:text-white">
+                  <span className="ml-4 align-middle font-bold text-gray-900 dark:text-white">
                     Streamer Quick Info
                   </span>
                 </div>
@@ -48,9 +48,17 @@ export default function LoggedIn() {
                     <input
                       id="search"
                       name="search"
-                      className="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 focus:placeholder:text-gray-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-800 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 focus:placeholder:text-gray-500 dark:bg-gray-700 dark:text-gray-300 sm:text-sm sm:leading-6"
                       placeholder="Search"
                       type="search"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const query = e.currentTarget.value;
+                          window.location.href = `/${query}`;
+                        }
+                      }}
                     />
                   </div>
                 </div>
@@ -71,7 +79,7 @@ export default function LoggedIn() {
                 <ThemeToggle />
                 <Menu as="div" className="relative ml-4 flex-shrink-0">
                   <div>
-                    <Menu.Button className="relative flex items-center rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="relative flex items-center rounded-full bg-gray-400 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <Image

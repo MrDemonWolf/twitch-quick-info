@@ -5,7 +5,7 @@ import { Disclosure } from "@headlessui/react";
 
 export default function LoggedOut() {
   return (
-    <Disclosure as="header" className="bg-gray-800">
+    <Disclosure as="header" className="bg-gray-200 dark:bg-gray-800">
       <>
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
           <div className="relative flex h-16 justify-between">
@@ -18,7 +18,7 @@ export default function LoggedOut() {
                   width={32}
                   height={32}
                 />
-                <span className="ml-4 align-middle dark:text-white">
+                <span className="ml-4 align-middle font-bold text-gray-900 dark:text-white">
                   Streamer Quick Info
                 </span>
               </div>
@@ -27,7 +27,7 @@ export default function LoggedOut() {
               <button
                 type="button"
                 onClick={() => void signIn("twitch")}
-                className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Sign In
               </button>

@@ -18,15 +18,11 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: DefaultSession["user"] & {
       id: string;
-      // ...other properties
-      // role: UserRole;
+      image: string;
+      name: string;
     };
+    accessToken: string;
   }
-
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
 }
 
 /**
@@ -42,7 +38,15 @@ export const authOptions: NextAuthOptions = {
         ...session.user,
         id: token.sub,
       },
+      accessToken: token.accessToken,
     }),
+    jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
   },
   providers: [
     TwitchProvider({
