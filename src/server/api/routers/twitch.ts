@@ -56,7 +56,7 @@ export const twitchRouter = createTRPCRouter({
     .query(async ({ input }) => {
       try {
         if (!input.accessToken) throw new Error("No access token provided");
-        if (!input.login) throw new Error("No login provided");
+        if (!input.id) throw new Error("No id provided");
         const response = await fetch(
           `https://api.twitch.tv/helix/users?id=${input.id}`,
           {
